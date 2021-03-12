@@ -49,6 +49,8 @@ function draw() {
   background(0);
   rectMode(CENTER);
 
+  packageSprite.x = packageBody.position.x;
+  packageSprite.y = packageBody.position.y;
 
   drawSprites(); 
  
@@ -56,14 +58,12 @@ function draw() {
 }
 
 function keyPressed() {
- if (keyDown === DOWN_ARROW) {
-	packageSprite.x = packageBody.position.x;
-	packageSprite.y = packageBody.position.y;
+ if ((keyCode === DOWN_ARROW)) {
 	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:false});
+	Matter.Body.setStatic(packageBody, false);
 	World.add(world, packageBody);
 	
   }
 }
-
 
 
