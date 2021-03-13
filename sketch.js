@@ -1,6 +1,6 @@
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
 var packageBody,ground
-const Engine = Matter.Engine;
+const Engine = Matter.Engine; // namespace (giving nickname)
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
@@ -38,6 +38,8 @@ function setup() {
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0, isStatic:true}); 
+	World.add(world, packageBody);
 
 	Engine.run(engine);
   
@@ -59,11 +61,10 @@ function draw() {
 
 function keyPressed() {
  if ((keyCode === DOWN_ARROW)) {
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:false});
+	
 	Matter.Body.setStatic(packageBody, false);
-	World.add(world, packageBody);
+	
 	
   }
 }
-
 
